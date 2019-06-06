@@ -4,6 +4,7 @@ for line in hand:
     line.strip()
     if line.find('From: ') >= 0: # Variable name.method
         print(line)
+
 import re
 hand = open('mbox-short.txt')
 for line in hand:
@@ -15,3 +16,7 @@ import re
 x = 'My 2 favorite numbers are 49 and 114'
 y = re.findall('[0-9]+', x)
 print(y)
+
+x = 'From: using the: char'
+print(re.findall('^F.+:', x)) # ['From: using the:'] Greedy
+print(re.findall('^F.+?:', x)) # ['From:'] Not greedy

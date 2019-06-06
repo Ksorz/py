@@ -40,3 +40,7 @@ except:
 variable.type
 
 quit() # Stop executing the program
+
+import os
+print(os.getcwd())
+os.chdir(r'PATH')
