@@ -18,5 +18,13 @@ y = re.findall('[0-9]+', x)
 print(y)
 
 x = 'From: using the: char'
-print(re.findall('^F.+:', x)) # ['From: using the:'] Greedy
-print(re.findall('^F.+?:', x)) # ['From:'] Not greedy
+print( re.findall('^F.+:', x) ) # ['From: using the:'] Greedy
+print( re.findall('^F.+?:', x) ) # ['From:'] Not greedy
+
+x = open('mbox-short.txt')
+for line in x:
+    line.strip()
+    print( re.findall('\S+@\S') )
+
+import os
+print(os.getcwd())

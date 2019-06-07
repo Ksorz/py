@@ -32,11 +32,6 @@ target = targets.pop(0) # Удаляет и возвращает (target) эле
 s = "  \t a string example\t  "
 trimmed = string.trim() # string = "   a string example   ", trimmed = "a string example"
 
-try:
-    # Code that MAY BE DANGEORUS. Try to minimize try/except block
-except:
-    # Other code
-
 variable.type
 
 quit() # Stop executing the program
