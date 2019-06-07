@@ -24,7 +24,7 @@ print( re.findall('^F.+?:', x) ) # ['From:'] Not greedy
 x = open('mbox-short.txt')
 for line in x:
     line.strip()
-    print( re.findall('\S+@\S') )
-
-import os
-print(os.getcwd())
+    if len(re.findall('^From (\S+@\S+)', line)) > 0:
+        print( re.findall('^From (\S+@\S+)', line) )  # print something non-blank'@'non-blank after 'From' but not including 'From'
+        print( re.findall('@([^ ]*)', line) ) # after '@' match non-blank [^ ] match any of them *
+        print( re.findall('From .*@([^ ]*)', line) )
