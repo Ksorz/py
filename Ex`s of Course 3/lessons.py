@@ -28,3 +28,16 @@ for line in x:
         print( re.findall('^From (\S+@\S+)', line) )  # print something non-blank'@'non-blank after 'From' but not including 'From'
         print( re.findall('@([^ ]*)', line) ) # after '@' match non-blank [^ ] match any of them *
         print( re.findall('From .*@([^ ]*)', line) )
+# 12.2 - Hypertext Transfer Protocol (HTTP)
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect( ('data.pr4e.org', 80) ) # 'data.pr4e.org' - host; 80 - port (tuple)
+cmd = 'GET http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP HTTP/1.0\r\n\r\n'.encode() # encode coverts Unicode to UTF-8
+# http://data.pr4e.org/romeo.txt
+mysock.send(cmd)
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode()) # decode converts UTF-8 to Unicode
+mysock.close()
