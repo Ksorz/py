@@ -24,3 +24,5 @@ $           # Matches the end of the line
 import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 mysock.connect( ('data.pr4e.org', 80) ) # 'data.pr4e.org' - host; 80 - port
+cmd = 'http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+mysock.send(cmd)
