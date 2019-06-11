@@ -32,8 +32,7 @@ for line in x:
 import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 mysock.connect( ('data.pr4e.org', 80) ) # 'data.pr4e.org' - host; 80 - port (tuple)
-cmd = 'GET http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP HTTP/1.0\r\n\r\n'.encode() # encode coverts Unicode to UTF-8
-# http://data.pr4e.org/romeo.txt
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode() # encode coverts Unicode to UTF-8
 mysock.send(cmd)
 while True:
     data = mysock.recv(512)
@@ -41,3 +40,8 @@ while True:
         break
     print(data.decode()) # decode converts UTF-8 to Unicode
 mysock.close()
+# 12.4 - Retrieving Web Pages
+import urllib.request, urllib.parse, urllib.error
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+for line in fhand:
+    print(line.decode().strip())

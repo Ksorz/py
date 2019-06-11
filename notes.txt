@@ -1,0 +1,2 @@
+ASCII - American Standard Code for Information Interchange
+UTF-8 - Unicode Transformation Format 1-4 bytes (UTF-8 is recommended practice for encoding data to be exchanged between systems)

@@ -23,6 +23,13 @@ $           # Matches the end of the line
 
 import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mysock.connect( ('data.pr4e.org', 80) ) # 'data.pr4e.org' - host; 80 - port
-cmd = 'http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
-mysock.send(cmd)
+mysock.connect( ('data.pr4e.org', 80) ) # 'data.pr4e.org' - host; 80 - port (tuple)
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode() # encode coverts Unicode to bytes (UTF-8 by default). When we send it we --encode-- it
+mysock.send(cmd) # Sending bytes (cmd)
+while True:
+    data = mysock.recv(512) # variable data is bytes
+    if (len(data) < 1):
+        break
+    encdata = data.decode() # decode converts UTF-8 or ASCII (by default ()) to Unicode (encdata). When we receive it we --decode-- it
+    print(encdata)
+mysock.close()
