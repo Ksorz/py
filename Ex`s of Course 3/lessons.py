@@ -45,4 +45,4 @@ import urllib.request, urllib.parse, urllib.error
 fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt') # Parse the URL. what server to talk to, what document to retrieve, HTTP version, GET request, all that stuff. (Almost the same as open(file))
 print(fhand)
 for line in fhand:
-    print(line.decode().strip()) # line is byte array (not str).
+    print(line.decode().strip()) # line is byte array (not str), so we .decode() it.
