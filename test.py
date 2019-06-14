@@ -18,8 +18,8 @@ from bs4 import BeautifulSoup
 
 _adress = input('enter:')
 fhand = urllib.request.urlopen(_adress).read()
-
-sp = BeautifulSoup(fhand, 'html.parser')
-tags = sp('a')
+sp = BeautifulSoup(fhand, 'html.parser') # sp is soup object with anchor tags
+tags = sp('a') # retreive all the 'a' anchor tags in document
+tags
 for tag in tags:
-    print(tag.get('href', tag))
+    print(tag.get('href', None)) # prints out href='THIS TEXT' or None (href key)

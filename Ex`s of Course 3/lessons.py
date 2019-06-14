@@ -46,3 +46,13 @@ fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt') # Parse the URL
 print(fhand)
 for line in fhand:
     print(line.decode().strip()) # line is byte array (not str), so we .decode() it.
+# 12.5 - Parsing Web Pages
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+_adress = input('enter:')
+fhand = urllib.request.urlopen(_adress).read() # document at that web page in a single big string with a /n in the end of each line
+sp = BeautifulSoup(fhand, 'html.parser') # sp is soup object with anchor tags
+tags = sp('a') # retreive all the 'a' anchor tags in document
+tags
+for tag in tags:
+    print(tag.get('href', None)) # prints out href='THIS TEXT' or None (href key)
