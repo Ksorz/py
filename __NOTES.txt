@@ -2,4 +2,4 @@ ASCII - American Standard Code for Information Interchange
 
 UTF-8 - Unicode Transformation Format 1-4 bytes (UTF-8 is recommended practice for encoding data to be exchanged between systems)
 
-https://www.crummy.com/software/BeautifulSoup/ - Parsing
+XML - eXtensible Markup Language is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.

@@ -24,6 +24,7 @@ max(something) # FUNCTION 'max' that return`s max value of something ARGUMENT in
 min(something) # FUNCTION 'max' that return`s min value of something ARGUMENT inside parenthesis
 len(list_string_array) # FUNCTION 'len' gives us a length of a ARGUMENT list, string, array
 ord('e') # Numeric value of a simple ASCII caracter
+round(float number) # Number rounding (float -> int)
 break # STATEMENT 'break' skips OUT of the loop
 continue # STATEMENT 'continue' skips to the TOP (abandons the current and goes to the next iteration) of the loop
 

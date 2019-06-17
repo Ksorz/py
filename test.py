@@ -1,25 +1,15 @@
-import urllib.request, urllib.parse, urllib.error
-import re
-_adress = input('enter:')
-fhand = urllib.request.urlopen(_adress)# Parse the URL. what server to talk to, what document to retrieve, HTTP version, GET request, all that stuff. (Almost the same as open(file))
-_count = 0
-for line in fhand:
-    line = line.decode().strip()
-    _urls = re.findall('href="(\S+mail?\S+)"', line)
-    if len(_urls) > 0:
-        for i in _urls:
-            _count += 1
-            print(i + '\n')
-print(_count)
+import socket
 
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock
+mysock.connect(('data.pr4e.org', 80))
+mysock
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
+mysock.send(cmd)
 
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-
-_adress = input('enter:')
-fhand = urllib.request.urlopen(_adress).read()
-sp = BeautifulSoup(fhand, 'html.parser') # sp is soup object with anchor tags
-tags = sp('a') # retreive all the 'a' anchor tags in document
-tags
-for tag in tags:
-    print(tag.get('href', None)) # prints out href='THIS TEXT' or None (href key)
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())
+mysock.close()
