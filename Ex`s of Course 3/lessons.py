@@ -11,6 +11,7 @@ for line in hand:
     line.strip()
     if re.search('^X-\S+Type', line): # Library name.function
         print(line)
+
 # 11.2 - Extracting Data
 import re
 x = 'My 2 favorite numbers are 49 and 114'
@@ -28,6 +29,7 @@ for line in x:
         print( re.findall('^From (\S+@\S+)', line) )  # print something non-blank'@'non-blank after 'From' but not including 'From'
         print( re.findall('@([^ ]*)', line) ) # after '@' match non-blank [^ ] match any of them *
         print( re.findall('From .*@([^ ]*)', line) )
+
 # 12.2 - Hypertext Transfer Protocol (HTTP)
 import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -40,12 +42,14 @@ while True:
         break
     print(data.decode()) # decode converts UTF-8 to Unicode
 mysock.close()
+
 # 12.4 - Retrieving Web Pages
 import urllib.request, urllib.parse, urllib.error
 fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt') # Parse the URL. what server to talk to, what document to retrieve, HTTP version, GET request, all that stuff. (Almost the same as open(file))
 print(fhand)
 for line in fhand:
     print(line.decode().strip()) # line is byte array (not str), so we .decode() it.
+
 # 12.5 - Parsing Web Pages
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
@@ -56,3 +60,16 @@ tags = sp('a') # retreive all the 'a' anchor tags in document
 tags
 for tag in tags:
     print(tag.get('href', None)) # prints out href='THIS TEXT' or None (href key)
+
+# 13.4 - Parsing XML
+import xml.etree.ElementTree as ET
+data = '''<person>
+  <name>Chuck</name>
+  <phone type="intl">
+    +1 734 303 4456
+    </phone>
+    <email hide="yes"/>
+</person>''' # '''   ''' triple quotes means multi-line string
+tree = ET.fromstring(data) # .fromstring says convert this (data) string and give us tree
+print('Name:', tree.find('name').text) # within that (tree) XML data go find the tag 'name'
+print('Attr:', tree.find('email').get('hide'))

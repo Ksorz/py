@@ -1,6 +1,6 @@
 import telebot
 
-bot = telebot.TeleBot("770544842:AAETUFb9uMC9TYOioSyR7SVodxDou-leOZ0")
+bot = telebot.TeleBot(input('Enter API key:').strip())
 
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
