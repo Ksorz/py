@@ -73,3 +73,43 @@ data = '''<person>
 tree = ET.fromstring(data) # .fromstring says convert this (data) string and give us tree
 print('Name:', tree.find('name').text) # within that (tree) XML data go find the tag 'name'
 print('Attr:', tree.find('email').get('hide'))
+
+# 13.7 - Using Application Programming Interfaces
+import urllib.request, urllib.parse, urllib.error
+import json
+
+api_key = 42
+serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1: break
+
+    parms = dict()
+    parms['address'] = address
+    parms['key'] = api_key
+    url = serviceurl + urllib.parse.urlencode(parms)
+
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url) # Get url header
+    data = uh.read().decode() # decode and read json data
+    print('Retrieved', len(data), 'characters')
+    headers = dict(uh.getheaders()) # get headers from .urlopen
+    # print(headers)
+
+    try:
+        js = json.loads(data) # parse json data into python-understanable format
+    except:
+        js = None
+
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print('==== Failure To Retrieve ====')
+        print(data)
+        continue
+    # print(json.dumps(js, indent=4)) # JSON body as str
+
+    lat = js['results'][0]['geometry']['location']['lat']
+    lng = js['results'][0]['geometry']['location']['lng']
+    print('lat', lat, 'lng', lng)
+    location = js['results'][0]['formatted_address']
+    print(location)

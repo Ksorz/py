@@ -1,3 +1,22 @@
+CLASS - a template (shape of an OBJECT)
+
+METHOD (or Message) - A defined capability of a CLASS
+METHODs are these things that are functions built into OBJECTs.
+
+ATTRIBUTE (or field)  - a bit of data in CLASS
+
+OBJECT (or Instance) - A particular instance of a CLASS
+
+
+OBJECTS - str, int, list, dict, float, soup etc
+An OBJECT is a bit of self-conatined code and data
+A key aspect of the OBJECT approach is to break the problem into smaller understandable parts.
+From outside looking in (OBJECT), you ignore the detail. From inside looking out, you ignore the outer detail
+
+
+
+================================================================================
+
 ASCII - American Standard Code for Information Interchange
 
 UTF-8 - Unicode Transformation Format 1-4 bytes (UTF-8 is recommended practice for encoding data to be exchanged between systems)

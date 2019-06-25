@@ -23,7 +23,7 @@ type(something) #
 max(something) # FUNCTION 'max' that return`s max value of something ARGUMENT inside parenthesis
 min(something) # FUNCTION 'max' that return`s min value of something ARGUMENT inside parenthesis
 len(list_string_array) # FUNCTION 'len' gives us a length of a ARGUMENT list, string, array
-ord('e') # Numeric value of a simple ASCII caracter
+ord('s') # Numeric value of a simple ASCII caracter
 round(float number) # Number rounding (float -> int)
 break # STATEMENT 'break' skips OUT of the loop
 continue # STATEMENT 'continue' skips to the TOP (abandons the current and goes to the next iteration) of the loop
@@ -58,10 +58,6 @@ array.insert(i, x) # Insert a new item with value x in the array before position
 str.split(sep=None, maxsplit=-1) # Return a list of the words in the string, using sep as the delimiter string.
 # for more inf ^^^^^ https://docs.python.org/3/library/stdtypes.html?highlight=split#str.split
 dict.get(key[, default]) # Return the value for key if key is in the dictionary, else default. If default is not given, it defaults to None, so that this method never raises a KeyError.
-
-
-
-
 
 
 
