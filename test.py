@@ -17,7 +17,7 @@ while True:
     uh = urllib.request.urlopen(url)
     data = uh.read().decode()
     print('Retrieved', len(data), 'characters')
-    headers = dict(uh.getheaders()) 
+    headers = dict(uh.getheaders())
     print(headers)
 
     try:
@@ -37,3 +37,7 @@ while True:
     print('lat', lat, 'lng', lng)
     location = js['results'][0]['formatted_address']
     print(location)
+
+
+    x = 'iiiii'
+    type(x)
