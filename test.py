@@ -1,43 +1,12 @@
-import urllib.request, urllib.parse, urllib.error
-import json
+def f(x):
+  return (x - 16)*(x + 43)
 
-api_key = 42
-serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+a = -100
+b = 10
+n = 0
+for t in range(a, b + 1):
 
-while True:
-    address = input('Enter location: ')
-    if len(address) < 1: break
+    if (t - 16)*(t + 43) <= 0:
+        n = n + 1
 
-    parms = dict()
-    parms['address'] = address
-    parms['key'] = api_key
-    url = serviceurl + urllib.parse.urlencode(parms)
-
-    print('Retrieving', url)
-    uh = urllib.request.urlopen(url)
-    data = uh.read().decode()
-    print('Retrieved', len(data), 'characters')
-    headers = dict(uh.getheaders())
-    print(headers)
-
-    try:
-        js = json.loads(data)
-    except:
-        js = None
-
-    if not js or 'status' not in js or js['status'] != 'OK':
-        print('==== Failure To Retrieve ====')
-        print(data)
-        continue
-        js
-    # print(json.dumps(js, indent=4))
-
-    lat = js['results'][0]['geometry']['location']['lat']
-    lng = js['results'][0]['geometry']['location']['lng']
-    print('lat', lat, 'lng', lng)
-    location = js['results'][0]['formatted_address']
-    print(location)
-
-
-    x = 'iiiii'
-    type(x)
+print(n)
